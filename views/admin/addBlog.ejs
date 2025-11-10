@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Blog</title>
+    <link rel="stylesheet" href="/css/admin.css" />
+  </head>
+  <body>
+    <div class="admin-container">
+      <h1>Add New Blog</h1>
+
+      <form
+        action="/admin/add-blog"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <fieldset>
+          <label>Title</label>
+          <input
+            type="text"
+            name="title"
+            placeholder="Enter blog title"
+            required
+          />
+        </fieldset>
+
+        <fieldset>
+          <label>Image</label>
+          <div class="file-input-wrapper">
+            <input type="file" id="imageUrl" name="imageUrl" required />
+            <label for="imageUrl" class="file-label">Choose File</label>
+            <span class="file-name">No file chosen</span>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <label>Category</label>
+          <input
+            type="text"
+            name="category"
+            placeholder="Enter category"
+            required
+          />
+        </fieldset>
+
+        <fieldset>
+          <label>Author</label>
+          <input type="text" name="author" placeholder="Author name" required />
+        </fieldset>
+
+        <fieldset>
+          <label>Slug</label>
+          <input
+            type="text"
+            name="slug"
+            placeholder="Unique slug for URL"
+            required
+          />
+        </fieldset>
+
+        <fieldset>
+          <label>Excerpt</label>
+          <textarea
+            name="excerpt"
+            placeholder="Short description"
+            required
+          ></textarea>
+        </fieldset>
+
+        <fieldset>
+          <label>Content</label>
+          <textarea
+            name="content"
+            placeholder="Full blog content"
+            required
+          ></textarea>
+        </fieldset>
+
+        <button type="submit">Add Blog</button>
+      </form>
+    </div>
+    <script>
+      const fileInput = document.getElementById("imageUrl");
+      const fileName = document.querySelector(".file-name");
+
+      fileInput.addEventListener("change", () => {
+        const name = fileInput.files[0]
+          ? fileInput.files[0].name
+          : "No file chosen";
+        fileName.textContent = name;
+      });
+    </script>
+  </body>
+</html>
